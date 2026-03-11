@@ -1,0 +1,6 @@
+weather/system/ExpiryTest.class
+weather/system/WeatherDataTest.class
+weather/system/LamportClockTest.class
+weather/system/SimpleIntegrationTest.class
+weather/system/IntegrationTest.class
+weather/system/WeatherSystemTestSuite.class

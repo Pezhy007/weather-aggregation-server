@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
+         http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>weather.system</groupId>
+    <artifactId>weather-aggregation</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
+
+    <properties>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.test.failure.ignore>false</maven.test.failure.ignore>
+    </properties>
+
+    <dependencies>
+        <!-- JSON parsing library -->
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>2.10.1</version>
+        </dependency>
+
+        <!-- JUnit 4 for testing -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.13.2</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- Hamcrest for better assertions -->
+        <dependency>
+            <groupId>org.hamcrest</groupId>
+            <artifactId>hamcrest-core</artifactId>
+            <version>1.3</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <!-- Compiler plugin -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.11.0</version>
+                <configuration>
+                    <source>11</source>
+                    <target>11</target>
+                    <encoding>UTF-8</encoding>
+                    <showDeprecation>true</showDeprecation>
+                    <showWarnings>true</showWarnings>
+                </configuration>
+            </plugin>
+
+            <!-- Surefire plugin for testing with timeouts -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.0.0</version>
+                <configuration>
+                    <!-- Test timeout configuration -->
+                    <forkedProcessTimeoutInSeconds>300</forkedProcessTimeoutInSeconds>
+                    <testFailureIgnore>false</testFailureIgnore>
+
+                    <!-- JVM arguments for testing -->
+                    <argLine>-Xmx1024m -XX:MaxPermSize=256m</argLine>
+
+                    <!-- System properties for tests -->
+                    <systemPropertyVariables>
+                        <test.timeout>60</test.timeout>
+                        <test.port.base>4568</test.port.base>
+                    </systemPropertyVariables>
+
+                    <!-- Parallel execution configuration -->
+                    <parallel>methods</parallel>
+                    <threadCount>4</threadCount>
+                    <perCoreThreadCount>true</perCoreThreadCount>
+
+                    <!-- Include/exclude patterns -->
+                    <includes>
+                        <include>**/*Test.java</include>
+                        <include>**/*TestSuite.java</include>
+                    </includes>
+
+                    <!-- Exclude long-running tests by default -->
+                    <excludes>
+                        <exclude>**/ExpiryTest.java</exclude>
+                        <exclude>**/IntegrationTest.java</exclude>
+                    </excludes>
+
+                    <!-- Reporting configuration -->
+                    <reportFormat>brief</reportFormat>
+                    <useFile>true</useFile>
+                    <printSummary>true</printSummary>
+                </configuration>
+
+                <!-- Execution configurations for different test types -->
+                <executions>
+                    <!-- Quick tests (default) -->
+                    <execution>
+                        <id>quick-tests</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>test</goal>
+                        </goals>
+                        <configuration>
+                            <includes>
+                                <include>**/LamportClockTest.java</include>
+                                <include>**/WeatherDataTest.java</include>
+                                <include>**/SimpleIntegrationTest.java</include>
+                            </includes>
+                            <excludes>
+                                <exclude>**/ExpiryTest.java</exclude>
+                                <exclude>**/IntegrationTest.java</exclude>
+                            </excludes>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- Failsafe plugin for integration tests -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-failsafe-plugin</artifactId>
+                <version>3.0.0</version>
+                <configuration>
+                    <forkedProcessTimeoutInSeconds>600</forkedProcessTimeoutInSeconds>
+                    <includes>
+                        <include>**/IntegrationTest.java</include>
+                        <include>**/ExpiryTest.java</include>
+                    </includes>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>integration-test</goal>
+                            <goal>verify</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- Exec plugin for running main classes -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>3.1.0</version>
+                <configuration>
+                    <mainClass>weather.system.AggregationServer</mainClass>
+                </configuration>
+                <executions>
+                    <!-- Server execution -->
+                    <execution>
+                        <id>run-server</id>
+                        <configuration>
+                            <mainClass>weather.system.AggregationServer</mainClass>
+                        </configuration>
+                    </execution>
+
+                    <!-- Content Server execution -->
+                    <execution>
+                        <id>run-content-server</id>
+                        <configuration>
+                            <mainClass>weather.system.ContentServer</mainClass>
+                        </configuration>
+                    </execution>
+
+                    <!-- GET Client execution -->
+                    <execution>
+                        <id>run-get-client</id>
+                        <configuration>
+                            <mainClass>weather.system.GETClient</mainClass>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- JAR plugin for creating executable JARs -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.3.0</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <addClasspath>true</addClasspath>
+                            <classpathPrefix>lib/</classpathPrefix>
+                            <mainClass>weather.system.AggregationServer</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
+
+            <!-- Assembly plugin for creating distribution -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>3.6.0</version>
+                <configuration>
+                    <descriptorRefs>
+                        <descriptorRef>jar-with-dependencies</descriptorRef>
+                    </descriptorRefs>
+                    <archive>
+                        <manifest>
+                            <mainClass>weather.system.AggregationServer</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>make-assembly</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- Clean plugin configuration -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-clean-plugin</artifactId>
+                <version>3.2.0</version>
+                <configuration>
+                    <filesets>
+                        <fileset>
+                            <directory>.</directory>
+                            <includes>
+                                <include>weather_data.*</include>
+                                <include>*-test-weather.txt</include>
+                                <include>weather-sample.txt</include>
+                                <include>*.log</include>
+                            </includes>
+                        </fileset>
+                    </filesets>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <!-- Profiles for different test scenarios -->
+    <profiles>
+        <!-- Quick tests profile (default) -->
+        <profile>
+            <id>quick-tests</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <configuration>
+                            <includes>
+                                <include>**/LamportClockTest.java</include>
+                                <include>**/WeatherDataTest.java</include>
+                                <include>**/SimpleIntegrationTest.java</include>
+                            </includes>
+                            <excludes>
+                                <exclude>**/ExpiryTest.java</exclude>
+                                <exclude>**/IntegrationTest.java</exclude>
+                            </excludes>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+
+        <!-- All tests profile -->
+        <profile>
+            <id>all-tests</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <configuration>
+                            <includes>
+                                <include>**/*Test.java</include>
+                            </includes>
+                            <excludes>
+                                <!-- No exclusions for all tests -->
+                            </excludes>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+
+        <!-- Unit tests only profile -->
+        <profile>
+            <id>unit-tests</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <configuration>
+                            <includes>
+                                <include>**/LamportClockTest.java</include>
+                                <include>**/WeatherDataTest.java</include>
+                            </includes>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+</project>

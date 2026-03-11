@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="weather.system.SimpleIntegrationTest" time="1.107" tests="7" errors="0" skipped="0" failures="0">
+  <properties>
+    <property name="gopherProxySet" value="false"/>
+    <property name="awt.toolkit" value="sun.lwawt.macosx.LWCToolkit"/>
+    <property name="java.specification.version" value="11"/>
+    <property name="sun.cpu.isalist" value=""/>
+    <property name="sun.jnu.encoding" value="UTF-8"/>
+    <property name="java.class.path" value="/Users/mohammadalirezaei/Downloads/Assignment2 Distributed System/assignment2_PB/target/test-classes:/Users/mohammadalirezaei/Downloads/Assignment2 Distributed System/assignment2_PB/target/classes:/Users/mohammadalirezaei/.m2/repository/com/google/code/gson/gson/2.10.1/gson-2.10.1.jar:/Users/mohammadalirezaei/.m2/repository/junit/junit/4.13.2/junit-4.13.2.jar:/Users/mohammadalirezaei/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:"/>
+    <property name="java.vm.vendor" value="Eclipse Adoptium"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="java.vendor.url" value="https://adoptium.net/"/>
+    <property name="user.timezone" value=""/>
+    <property name="java.vm.specification.version" value="11"/>
+    <property name="os.name" value="Mac OS X"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="user.country" value="US"/>
+    <property name="sun.boot.library.path" value="/Library/Java/JavaVirtualMachines/temurin-11.jdk/Contents/Home/lib"/>
+    <property name="sun.java.command" value="/Users/mohammadalirezaei/Downloads/Assignment2 Distributed System/assignment2_PB/target/surefire/surefirebooter-20250915082458038_3.jar /Users/mohammadalirezaei/Downloads/Assignment2 Distributed System/assignment2_PB/target/surefire 2025-09-15T08-24-57_999-jvmRun1 surefire-20250915082458038_1tmp surefire_0-20250915082458038_2tmp"/>
+    <property name="http.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
+    <property name="jdk.debug" value="release"/>
+    <property name="test" value="LamportClockTest,WeatherDataTest,SimpleIntegrationTest"/>
+    <property name="surefire.test.class.path" value="/Users/mohammadalirezaei/Downloads/Assignment2 Distributed System/assignment2_PB/target/test-classes:/Users/mohammadalirezaei/Downloads/Assignment2 Distributed System/assignment2_PB/target/classes:/Users/mohammadalirezaei/.m2/repository/com/google/code/gson/gson/2.10.1/gson-2.10.1.jar:/Users/mohammadalirezaei/.m2/repository/junit/junit/4.13.2/junit-4.13.2.jar:/Users/mohammadalirezaei/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="user.home" value="/Users/mohammadalirezaei"/>
+    <property name="user.language" value="en"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.version.date" value="2025-07-15"/>
+    <property name="java.home" value="/Library/Java/JavaVirtualMachines/temurin-11.jdk/Contents/Home"/>
+    <property name="file.separator" value="/"/>
+    <property name="basedir" value="/Users/mohammadalirezaei/Downloads/Assignment2 Distributed System/assignment2_PB"/>
+    <property name="java.vm.compressedOopsMode" value="Zero based"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.awt.graphicsenv" value="sun.awt.CGraphicsEnvironment"/>
+    <property name="surefire.real.class.path" value="/Users/mohammadalirezaei/Downloads/Assignment2 Distributed System/assignment2_PB/target/surefire/surefirebooter-20250915082458038_3.jar"/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
+    <property name="java.runtime.version" value="11.0.28+6"/>
+    <property name="user.name" value="mohammadalirezaei"/>
+    <property name="path.separator" value=":"/>
+    <property name="os.version" value="15.6.1"/>
+    <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
+    <property name="test.port.base" value="4568"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="java.vm.name" value="OpenJDK 64-Bit Server VM"/>
+    <property name="java.vendor.version" value="Temurin-11.0.28+6"/>
+    <property name="test.timeout" value="60"/>
+    <property name="localRepository" value="/Users/mohammadalirezaei/.m2/repository"/>
+    <property name="java.vendor.url.bug" value="https://github.com/adoptium/adoptium-support/issues"/>
+    <property name="java.io.tmpdir" value="/var/folders/rl/36c9tcvd5pb9znnlmkc714s80000gn/T/"/>
+    <property name="java.version" value="11.0.28"/>
+    <property name="user.dir" value="/Users/mohammadalirezaei/Downloads/Assignment2 Distributed System/assignment2_PB"/>
+    <property name="os.arch" value="aarch64"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="java.awt.printerjob" value="sun.lwawt.macosx.CPrinterJob"/>
+    <property name="sun.os.patch.level" value="unknown"/>
+    <property name="java.library.path" value="/Users/mohammadalirezaei/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:."/>
+    <property name="java.vm.info" value="mixed mode"/>
+    <property name="java.vendor" value="Eclipse Adoptium"/>
+    <property name="java.vm.version" value="11.0.28+6"/>
+    <property name="java.specification.maintenance.version" value="3"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeBig"/>
+    <property name="java.class.version" value="55.0"/>
+    <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
+  </properties>
+  <testcase name="testServerStartsAndResponds" classname="weather.system.SimpleIntegrationTest" time="0.366">
+    <system-out><![CDATA[
+=== Setting up test on port 4570 ===
+No existing weather data found - starting with empty store
+Weather Aggregation Server started on port 4570
+Lamport Clock initialized at: 0
+30-second expiry rule active - content servers must communicate within 30s
+Test server ready on port 4570
+TEST: Server starts and responds to connections
+✓ Server is running and accepting connections
+]]></system-out>
+  </testcase>
+  <testcase name="testWeatherDataProcessing" classname="weather.system.SimpleIntegrationTest" time="0.365">
+    <system-out><![CDATA[
+=== Setting up test on port 4571 ===
+No existing weather data found - starting with empty store
+Weather Aggregation Server started on port 4571
+Lamport Clock initialized at: 0
+30-second expiry rule active - content servers must communicate within 30s
+Test server ready on port 4571
+TEST: Weather data processing and JSON conversion
+✓ Weather data processing works correctly
+]]></system-out>
+  </testcase>
+  <testcase name="testContentServerPutOperation" classname="weather.system.SimpleIntegrationTest" time="0.389">
+    <system-out><![CDATA[
+=== Setting up test on port 4572 ===
+No existing weather data found - starting with empty store
+Weather Aggregation Server started on port 4572
+Lamport Clock initialized at: 0
+30-second expiry rule active - content servers must communicate within 30s
+Test server ready on port 4572
+TEST: ContentServer can PUT data to server
+ContentServer initialized
+Server URL: http://localhost:4572
+File path: simple-test-weather.txt
+Lamport Clock: 0
+Request: PUT /weather.json HTTP/1.1 [Clock: 1]
+Updated Lamport clock to: 2 (received: 1)
+PUT: Received 260 chars from /127.0.0.1:63771
+PUT Response: 201 Created [Clock: 4]
+Successfully sent weather data for station: SIMPLE001
+✓ ContentServer PUT operation successful
+PUT: Created new station SIMPLE001 from /127.0.0.1:63771 [Clock: 3]
+]]></system-out>
+  </testcase>
+  <testcase name="testLamportClockFunctionality" classname="weather.system.SimpleIntegrationTest" time="0.362">
+    <system-out><![CDATA[
+=== Setting up test on port 4573 ===
+No existing weather data found - starting with empty store
+Weather Aggregation Server started on port 4573
+Lamport Clock initialized at: 0
+30-second expiry rule active - content servers must communicate within 30s
+Test server ready on port 4573
+TEST: Lamport clocks are working in components
+✓ Lamport clock functionality verified
+]]></system-out>
+    <system-err><![CDATA[Warning: Could not rename backup to main storage file
+]]></system-err>
+  </testcase>
+  <testcase name="testErrorHandling" classname="weather.system.SimpleIntegrationTest" time="0.362">
+    <system-out><![CDATA[
+=== Setting up test on port 4574 ===
+No existing weather data found - starting with empty store
+Weather Aggregation Server started on port 4574
+Lamport Clock initialized at: 0
+30-second expiry rule active - content servers must communicate within 30s
+Test server ready on port 4574
+TEST: System handles errors gracefully
+GETClient initialized
+Server URL: http://localhost:9999
+Lamport Clock: 0
+✓ Error handling works correctly
+]]></system-out>
+    <system-err><![CDATA[Error connecting to server: Connection refused (Connection refused)
+Make sure the server is running at: http://localhost:9999
+Warning: Could not rename backup to main storage file
+]]></system-err>
+  </testcase>
+  <testcase name="testGetClientRetrievesData" classname="weather.system.SimpleIntegrationTest" time="0.912">
+    <system-out><![CDATA[
+=== Setting up test on port 4575 ===
+No existing weather data found - starting with empty store
+Weather Aggregation Server started on port 4575
+Lamport Clock initialized at: 0
+30-second expiry rule active - content servers must communicate within 30s
+Test server ready on port 4575
+TEST: GETClient can retrieve data from server
+ContentServer initialized
+Server URL: http://localhost:4575
+File path: simple-test-weather.txt
+Lamport Clock: 0
+Request: PUT /weather.json HTTP/1.1 [Clock: 1]
+Updated Lamport clock to: 2 (received: 1)
+PUT: Received 260 chars from /127.0.0.1:63770
+PUT Response: 201 Created [Clock: 4]
+Successfully sent weather data for station: SIMPLE001
+PUT: Created new station SIMPLE001 from /127.0.0.1:63770 [Clock: 3]
+GETClient initialized
+Server URL: http://localhost:4575
+Lamport Clock: 0
+Request: GET /weather.json HTTP/1.1 [Clock: 4]
+Updated Lamport clock to: 5 (received: 1)
+GET: Served 1 weather stations [Clock: 6]
+GET Response: 200 OK [Clock: 7]
+
+=== Weather Data Feed ===
+Total stations available: 1
+
+--- Weather Station 1 ---
+id: SIMPLE001
+name: Simple Test Station
+state: VIC
+time_zone: EST
+lat: -37.8
+lon: 144.9
+air_temp: 20.5
+apparent_t: 0.0
+dewpt: 0.0
+press: 0.0
+rel_hum: 65
+wind_spd_kmh: 10
+wind_spd_kt: 0
+✓ GETClient retrieval successful
+]]></system-out>
+    <system-err><![CDATA[Warning: Could not rename backup to main storage file
+]]></system-err>
+  </testcase>
+  <testcase name="testMultipleClients" classname="weather.system.SimpleIntegrationTest" time="1.102">
+    <system-out><![CDATA[
+=== Setting up test on port 4576 ===
+No existing weather data found - starting with empty store
+Weather Aggregation Server started on port 4576
+Lamport Clock initialized at: 0
+30-second expiry rule active - content servers must communicate within 30s
+Test server ready on port 4576
+TEST: Multiple GET clients can access server
+ContentServer initialized
+Server URL: http://localhost:4576
+File path: simple-test-weather.txt
+Lamport Clock: 0
+Request: PUT /weather.json HTTP/1.1 [Clock: 1]
+Updated Lamport clock to: 2 (received: 1)
+PUT: Received 260 chars from /127.0.0.1:63769
+PUT Response: 201 Created [Clock: 4]
+Successfully sent weather data for station: SIMPLE001
+PUT: Created new station SIMPLE001 from /127.0.0.1:63769 [Clock: 3]
+GETClient initialized
+Server URL: http://localhost:4576
+Lamport Clock: 0
+Request: GET /weather.json HTTP/1.1 [Clock: 4]
+Updated Lamport clock to: 5 (received: 1)
+GET: Served 1 weather stations [Clock: 6]
+GET Response: 200 OK [Clock: 7]
+
+=== Weather Data Feed ===
+Total stations available: 1
+
+--- Weather Station 1 ---
+id: SIMPLE001
+name: Simple Test Station
+state: VIC
+time_zone: EST
+lat: -37.8
+lon: 144.9
+air_temp: 20.5
+apparent_t: 0.0
+dewpt: 0.0
+press: 0.0
+rel_hum: 65
+wind_spd_kmh: 10
+wind_spd_kt: 0
+Client 0 completed: true
+GETClient initialized
+Server URL: http://localhost:4576
+Lamport Clock: 0
+Request: GET /weather.json HTTP/1.1 [Clock: 7]
+Updated Lamport clock to: 8 (received: 1)
+GET: Served 1 weather stations [Clock: 9]
+GET Response: 200 OK [Clock: 10]
+
+=== Weather Data Feed ===
+Total stations available: 1
+
+--- Weather Station 1 ---
+id: SIMPLE001
+name: Simple Test Station
+state: VIC
+time_zone: EST
+lat: -37.8
+lon: 144.9
+air_temp: 20.5
+apparent_t: 0.0
+dewpt: 0.0
+press: 0.0
+rel_hum: 65
+wind_spd_kmh: 10
+wind_spd_kt: 0
+Client 1 completed: true
+✓ Multiple concurrent clients successful
+]]></system-out>
+    <system-err><![CDATA[Warning: Could not rename backup to main storage file
+]]></system-err>
+  </testcase>
+</testsuite>
